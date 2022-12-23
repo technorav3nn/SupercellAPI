@@ -26,6 +26,6 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"@sc-api/rest": "workspace:*"
+		"@sc-api/rest": "*"
 	}
 }

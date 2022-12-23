@@ -1,6 +1,6 @@
 {
 	"name": "@sc-api/rest",
-	"version": "0.0.2",
+	"version": "0.0.0",
 	"main": "./dist/index.js",
 	"module": "./dist/index.mjs",
 	"types": "./dist/index.d.ts",
@@ -16,6 +16,7 @@
 		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
 	},
 	"devDependencies": {
+		"@types/node": "^18.11.17",
 		"eslint": "^7.32.0",
 		"eslint-config-custom": "workspace:*",
 		"tsconfig": "workspace:*",
@@ -26,6 +27,8 @@
 		"access": "public"
 	},
 	"dependencies": {
+		"@sapphire/async-queue": "^1.5.0",
+		"tiny-typed-emitter": "^2.1.0",
 		"undici": "^5.14.0"
 	}
 }
