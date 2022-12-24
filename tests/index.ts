@@ -8,26 +8,10 @@ const pollingClient = createPollingClient({
 	apiClient: client,
 });
 
-pollingClient.on("player:poll", (player) => {
-	console.log("polled player Death_Blows: ");
+client.players.getUpcomingChests("#RYG8UCYLV").then((chestCycle) => {
+	const chests = chestCycle.chests.map((ch) => ch.iconUrl);
+
+	console.log(chests);
 });
-
-pollingClient.on("player:update", (oldPlayer, newPlayer) => {
-	const oldDeck = (oldPlayer as any).currentDeck[1];
-	const newDeck = (newPlayer as any).currentDeck[1];
-
-	console.log(oldDeck.name, newDeck.name);
-
-	if ((oldPlayer as any).currentDeck !== (newPlayer as any).currentDeck) {
-		console.log((oldPlayer as any).currentDeck, (newPlayer as any).currentDeck);
-		console.log("player Death_Blows changed their deck!");
-	} else {
-		console.log("player Death_Blows has not changed their deck");
-	}
-});
-
-pollingClient.addPlayerTags(["#RYG8UCYLV"]);
-
-pollingClient.start();
 
 // client.players.getUpcomingChests("#RYG8UCYLV").then(console.log).catch(console.error);

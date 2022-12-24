@@ -12,13 +12,13 @@ export interface APIPlayer {
 	challengeMaxWins: number;
 	tournamentCardsWon: number;
 	tournamentBattleCount: number;
-	role: string;
+	role: string | null;
 	donations: number;
 	donationsReceived: number;
 	totalDonations: number;
 	warDayWins: number;
 	clanCardsCollected: number;
-	clan: APIPlayerClan;
+	clan: APIPlayerClan | null;
 	arena: APIArena;
 	leagueStatistics: APILeagueStatistics;
 	badges: APIBadge[];
@@ -68,6 +68,13 @@ export interface APICard {
 	starLevel?: number;
 }
 
+export enum APIRoles {
+	CoLeader = "coLeader",
+	Leader = "leader",
+	Member = "member",
+	Elder = "elder",
+}
+
 export interface APICardIconUrls {
 	medium: string;
 }
@@ -78,12 +85,7 @@ export interface APIPlayerClan {
 	badgeId: number;
 }
 
-export interface APICurrentFavouriteCard {
-	name: string;
-	id: number;
-	maxLevel: number;
-	iconUrls: APICardIconUrls;
-}
+export type APICurrentFavouriteCard = Exclude<"starLevel" | "count", APICard>;
 
 export interface APILeagueStatistics {
 	currentSeason: APIPlayerCurrentSeason;
@@ -120,5 +122,9 @@ export type APIChestNames =
 
 export interface APIChest {
 	name: string;
-	index: APIChestNames;
+	index: number;
+}
+
+export interface ResolvedAPIChest extends APIChest {
+	iconUrl: string;
 }
