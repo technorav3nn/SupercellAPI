@@ -10,8 +10,10 @@
 		"build": "turbo run build",
 		"dev": "turbo run dev --parallel",
 		"lint": "turbo run lint",
-		"format": "prettier --write \"**/*.{ts,tsx,md}\"",
-		"test": "ts-node tests/index.ts"
+		"clean": "turbo run clean",
+		"test": "turbo run test",
+		"non-vitest-test": "ts-node tests/index.ts",
+		"format": "prettier --write \"**/*.{ts,tsx,md}\""
 	},
 	"devDependencies": {
 		"eslint-config-custom": "*",

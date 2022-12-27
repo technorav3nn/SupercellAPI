@@ -26,6 +26,7 @@
 		"access": "public"
 	},
 	"dependencies": {
-		"@sc-api/rest": "*"
+		"@sc-api/rest": "*",
+		"@sc-api/shared-utils": "*"
 	}
 }

@@ -13,11 +13,16 @@
 		"build": "tsup src/index.ts --format esm,cjs --dts",
 		"dev": "tsup src/index.ts --format esm,cjs --watch --dts",
 		"lint": "TIMING=1 eslint \"src/**/*.ts*\"",
-		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+		"clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+		"test": "vitest run"
 	},
-	"devDependencies": {},
+	"devDependencies": {
+		"vitest": "^0.26.2"
+	},
 	"publishConfig": {
 		"access": "public"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"nothing-to-see-here": "^1.0.1"
+	}
 }

@@ -1,6 +1,6 @@
 import { PollingClient } from "@sc-api/rest";
-import { ClashRoyaleClient } from "../..";
-import { ApiBaseURL } from "../util/constants";
+import { ClashRoyaleClient } from "..";
+import { ApiBaseURL } from "../lib/util/constants";
 import { setInterval } from "node:timers";
 
 export interface ClashRoyalePollingClientOptions {

@@ -1,4 +1,4 @@
-import { PlayersAPIRoute } from "../api/players";
+import { PlayersAPIRoute } from "../../api/players";
 import {
 	APIAchievement,
 	APIArena,
@@ -360,6 +360,7 @@ export class Player {
 	 */
 	public getClan() {
 		// TODO: Implementation required
+		this.playersApi.getBattleLog(this.tag);
 		throw new Error("Not implemented");
 	}
 
@@ -369,8 +370,7 @@ export class Player {
 	 * @todo Implement
 	 */
 	public getBattleLog() {
-		// TODO: Implementation required
-		throw new Error("Not implemented");
+		return this.playersApi.getBattleLog(this.tag);
 	}
 
 	/**

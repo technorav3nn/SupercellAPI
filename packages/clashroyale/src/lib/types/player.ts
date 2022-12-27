@@ -1,3 +1,5 @@
+import { ChestData } from "../util/constants";
+
 export interface APIPlayer {
 	tag: string;
 	name: string;
@@ -127,4 +129,16 @@ export interface APIChest {
 
 export interface ResolvedAPIChest extends APIChest {
 	iconUrl: string;
+}
+
+export type ChestNames = keyof typeof ChestData;
+
+export interface ChestTime {
+	name: ChestNames;
+	time: number;
+}
+
+export interface ChestTimeWithDate {
+	name: ChestNames;
+	time: Date;
 }

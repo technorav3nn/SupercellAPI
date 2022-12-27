@@ -1,13 +1,7 @@
-import { APIChest, ResolvedAPIChest } from "../types/player";
+import { APIChest, ChestNames, ChestTime, ChestTimeWithDate, ResolvedAPIChest } from "../types/player";
 import { ChestData } from "../util/constants";
 
-export type ChestNames = keyof typeof ChestData;
-
-export interface ChestTime {
-	name: ChestNames;
-	time: number;
-}
-
+// represents the chest cycle of a player
 export class ChestCycle {
 	/**
 	 * The chests in the cycle
@@ -36,8 +30,11 @@ export class ChestCycle {
 	}
 
 	/**
-	 * Gets the approximate time of all cgets in the cycle
-	 * @returns {Date[]}
+	 * Gets the approximate time of all chests in the cycle
+	 * This assumes that you open the chest as soon as it is available, and
+	 * that you keep doing so until the end of the cycle.
+	 * This means its not 100% accurate, but it should be close enough.
+	 * @returns {ChestTimeWithDate[]}
 	 */
 	public getAllChestTimes() {
 		const chestTimes = this.chests.reduce(
@@ -51,6 +48,9 @@ export class ChestCycle {
 			[{ time: ChestData[this.chests[0].name as ChestNames].time, name: this.chests[0].name }] as ChestTime[],
 		);
 
-		return chestTimes.map((chest) => new Date(Date.now() + chest.time * 1000));
+		return chestTimes.map((chest) => ({
+			name: chest.name,
+			time: new Date(Date.now() + chest.time * 1000),
+		})) as ChestTimeWithDate[];
 	}
 }
